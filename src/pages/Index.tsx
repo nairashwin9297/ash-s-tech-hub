@@ -27,6 +27,8 @@ const Index = () => {
     leetcode: "https://leetcode.com/u/ashwin9297nair/",
     resumeUrl: "https://drive.google.com/uc?export=download&id=1yJJyoT9FVvQZN-rt52Ps11ixS1TUh0yK",
     profilePhoto: "https://drive.google.com/uc?export=view&id=1R4Du3nnOGBJdxzDWgao4ifRAVMb22M4Q",
+    awsCertUrl: "https://drive.google.com/uc?export=download&id=10hoXOzGazUqvI_miQZG-f3cs5hg_XekN",
+    awsBadge: "https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Solutions-Architect-Associate_badge.3419559c682629072f1eb968d59dea0741772c0f.png",
     yearsOfExperience: 2
   };
 
@@ -36,7 +38,7 @@ const Index = () => {
     { id: 3, name: "OrderHub", description: "Food ordering management system integrating SQL Server database with React.js and Node.js, enhanced with Power BI visualizations for real-time analytics", technologies: ["React.js", "Node.js", "SQL Server", "Power BI"], category: "fullstack", github: "https://github.com/nairashwin9297/OrderHub", demo: null, featured: true },
     { id: 4, name: "GenAI Projects Collection", description: "Collection of 7 machine learning and generative AI projects including RAG systems, neural networks, GANs, LLM fine-tuning, and diffusion models", technologies: ["Python", "TensorFlow", "PyTorch", "FAISS", "LangChain", "Transformers"], category: "ai", github: "https://github.com/nairashwin9297/genAI_projects", demo: null, featured: true },
     { id: 5, name: "Movie Recommender", description: "Personal movie recommendation system using hybrid Content-Based and Collaborative Filtering with advanced text analysis", technologies: ["Python", "Machine Learning", "NLP", "Pandas", "Scikit-learn"], category: "ai", github: "https://github.com/nairashwin9297", demo: null, featured: false },
-    { id: 6, name: "Food Ordering Mobile App", description: "Cross-platform food ordering mobile app for Android and iOS with secure JWT authentication, Firebase integration, and Google Places API", technologies: ["Flutter", "Firebase", "Android", "iOS", "Google Places API"], category: "mobile", github: "https://github.com/nairashwin9297", demo: null, featured: false }
+    { id: 6, name: "Food Ordering Mobile App", description: "Cross-platform food ordering mobile app for Android and iOS with secure JWT authentication, Firebase integration, and Google Places API", technologies: ["Flutter", "Firebase", "Android", "iOS", "Google Places API"], category: "fullstack", github: "https://github.com/nairashwin9297", demo: null, featured: false }
   ];
 
   const experiences = [
@@ -86,7 +88,7 @@ const Index = () => {
   ];
 
   const achievements = [
-    { title: "AWS Certified Solutions Architect - Associate", type: "certification", icon: FaCertificate, date: "2024", image: "https://drive.google.com/uc?export=view&id=10hoXOzGazUqvI_miQZG-f3cs5hg_XekN" },
+    { title: "AWS Certified Solutions Architect - Associate", type: "certification", icon: FaCertificate, date: "2024", badge: info.awsBadge, certUrl: info.awsCertUrl },
     { title: "Harvard Blockchain Hackathon - Top 15", type: "hackathon", icon: FaTrophy, description: "Selected among top 15 teams to present blockchain solution" }
   ];
 
@@ -139,6 +141,10 @@ const Index = () => {
 
   const filteredProjects = projectFilter === 'all' ? projects : projects.filter(p => p.category === projectFilter);
   const navItems = ['Home', 'About', 'Projects', 'Experience', 'Skills', 'Contact'];
+  
+  const experienceCountUp = useCountUp(info.yearsOfExperience, 2000, 0);
+  const gpaCountUp = useCountUp(3.84, 2000, 2);
+  const studentsCountUp = useCountUp(58, 2000, 0);
 
   return (
     <div className={`${darkMode ? 'dark' : ''} transition-colors duration-300`}>
@@ -274,7 +280,7 @@ const Index = () => {
               <h2 className="text-4xl font-bold text-center mb-4">Featured <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Projects</span></h2>
               <p className="text-center text-muted-foreground mb-12">Some of my recent work in cloud, AI, and full-stack development</p>
               <div className="flex flex-wrap justify-center gap-4 mb-12">
-                {['all', 'cloud', 'fullstack', 'ai', 'mobile'].map((filter) => (
+                {['all', 'cloud', 'fullstack', 'ai'].map((filter) => (
                   <button key={filter} onClick={() => setProjectFilter(filter)} className={`px-6 py-2 rounded-lg font-semibold transition-all ${projectFilter === filter ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg' : 'bg-muted hover:bg-muted/80'}`}>
                     {filter.charAt(0).toUpperCase() + filter.slice(1)}
                   </button>
@@ -339,7 +345,8 @@ const Index = () => {
                         ))}
                       </div>
                     </div>
-                  </motion.div>
+                    </motion.div>
+                  </Card3D>
                 ))}
               </div>
               <div className="mt-16">
@@ -360,10 +367,10 @@ const Index = () => {
                         {edu.courses.map((course, idx) => (
                           <span key={idx} className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 text-xs rounded-full">{course}</span>
                         ))}
-                      </div>
                     </motion.div>
-                  ))}
-                </div>
+                  </motion.div>
+                ))}
+              </div>
               </div>
               <div className="mt-16">
                 <h3 className="text-3xl font-bold text-center mb-8">Achievements & Certifications</h3>
