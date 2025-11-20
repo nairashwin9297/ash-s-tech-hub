@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaChess, FaCode, FaDownload, FaBars, FaTimes, FaMoon, FaSun, FaArrowDown, FaAws, FaReact, FaNodeJs, FaPython, FaJava, FaDocker, FaDatabase, FaRocket, FaCheckCircle, FaCopy, FaArrowUp, FaGraduationCap, FaCertificate, FaTrophy, FaMapMarkerAlt, FaPaperPlane, FaCloud, FaMobile, FaChalkboardTeacher } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiPostgresql, SiFirebase, SiKubernetes, SiTerraform, SiFlutter, SiDart, SiCplusplus, SiJavascript, SiGit, SiPandas, SiExpress, SiLeetcode } from 'react-icons/si';
 import { FaChartBar } from 'react-icons/fa';
+import { useCountUp } from '@/hooks/useCountUp';
+import { Card3D } from '@/components/Card3D';
 
 const Index = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -321,30 +323,31 @@ const Index = () => {
               <div className="relative">
                 <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-600"></div>
                 {experiences.map((exp, index) => (
-                  <motion.div key={exp.id} initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className={`relative mb-12 ${index % 2 === 0 ? 'md:pr-[50%] md:text-right' : 'md:pl-[50%] md:ml-0'}`}>
-                    <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
-                    <div className="bg-card rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow">
-                      <div className="flex items-start justify-between mb-3">
-                        <div>
-                          <h3 className="text-xl font-bold">{exp.role}</h3>
-                          <p className="text-primary font-semibold">{exp.company}</p>
+                  <Card3D key={exp.id}>
+                    <motion.div initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className={`relative mb-12 ${index % 2 === 0 ? 'md:pr-[50%] md:text-right' : 'md:pl-[50%] md:ml-0'}`}>
+                      <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                      <div className="bg-card rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow">
+                        <div className="flex items-start justify-between mb-3">
+                          <div>
+                            <h3 className="text-xl font-bold">{exp.role}</h3>
+                            <p className="text-primary font-semibold">{exp.company}</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-sm text-muted-foreground">{exp.period}</p>
+                            <p className="text-sm text-muted-foreground flex items-center gap-1 justify-end"><FaMapMarkerAlt className="text-xs" /> {exp.location}</p>
+                          </div>
                         </div>
-                        <div className="text-right">
-                          <p className="text-sm text-muted-foreground">{exp.period}</p>
-                          <p className="text-sm text-muted-foreground flex items-center gap-1 justify-end"><FaMapMarkerAlt className="text-xs" /> {exp.location}</p>
+                        <ul className="space-y-2 mb-4">
+                          {exp.achievements.map((achievement, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-muted-foreground"><FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" /><span className="text-sm">{achievement}</span></li>
+                          ))}
+                        </ul>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.technologies.map((tech, idx) => (
+                            <span key={idx} className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-xs rounded-full">{tech}</span>
+                          ))}
                         </div>
                       </div>
-                      <ul className="space-y-2 mb-4">
-                        {exp.achievements.map((achievement, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-muted-foreground"><FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" /><span className="text-sm">{achievement}</span></li>
-                        ))}
-                      </ul>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech, idx) => (
-                          <span key={idx} className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-xs rounded-full">{tech}</span>
-                        ))}
-                      </div>
-                    </div>
                     </motion.div>
                   </Card3D>
                 ))}
@@ -367,22 +370,27 @@ const Index = () => {
                         {edu.courses.map((course, idx) => (
                           <span key={idx} className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 text-xs rounded-full">{course}</span>
                         ))}
+                      </div>
                     </motion.div>
-                  </motion.div>
-                ))}
-              </div>
+                  ))}
+                </div>
               </div>
               <div className="mt-16">
                 <h3 className="text-3xl font-bold text-center mb-8">Achievements & Certifications</h3>
                 <div className="grid md:grid-cols-2 gap-8">
                   {achievements.map((achievement, index) => (
                     <motion.div key={index} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-card rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow">
-                      {achievement.image ? (
+                      {achievement.badge ? (
                         <div className="flex flex-col items-center gap-4">
-                          <img src={achievement.image} alt={achievement.title} className="w-32 h-32 object-contain" />
+                          <img src={achievement.badge} alt={achievement.title} className="w-32 h-32 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                           <div className="text-center">
                             <h4 className="text-lg font-bold">{achievement.title}</h4>
                             {achievement.date && <p className="text-sm text-muted-foreground mt-1">{achievement.date}</p>}
+                            {achievement.certUrl && (
+                              <a href={achievement.certUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm">
+                                <FaDownload /> Download Certificate
+                              </a>
+                            )}
                           </div>
                         </div>
                       ) : (
