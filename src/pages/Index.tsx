@@ -6,6 +6,24 @@ import { FaChartBar } from 'react-icons/fa';
 import { useCountUp } from '@/hooks/useCountUp';
 import { Card3D } from '@/components/Card3D';
 
+// Import all images from assets folder
+import ashwinImg from '../assets/Ashwin.png'; // or .png - adjust extension as needed
+import awsImg from '../assets/aws.png';
+import verbelloImg from '../assets/Verbello.png'; // or .png - adjust extension as needed
+import orderhubImg from '../assets/Orderhub.jpeg';
+import genaiImg from '../assets/Genai.jpeg';
+import movieImg from '../assets/movie.jpg';
+
+// // If you want to use them in an object for easy access:
+// const images = {
+//   ashwin: ashwinImg,
+//   aws: awsImg,
+//   verbello: verbelloImg,
+//   orderhub: orderhubImg,
+//   genai: genaiImg,
+//   movie: movieImg
+// };
+
 const Index = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
@@ -19,7 +37,7 @@ const Index = () => {
 
   const info = {
     name: "Ashwin Nair",
-    title: "Software Developer | Cloud | AI",
+    title: "Graduate Teaching Assitant@Northeastern | Full Stack SDE | AWS Certified Solution Architect | Gen AI | MSIS Grad",
     tagline: "Building scalable cloud solutions and intelligent systems",
     bio: "Graduate student at Northeastern University specializing in cloud architecture, AI systems, and full-stack development. With 2+ years of experience in software development and teaching, I'm passionate about leveraging cutting-edge technologies to solve complex problems and mentor the next generation of developers.",
     email: "nair.ash@northeastern.edu",
@@ -35,12 +53,12 @@ const Index = () => {
   };
 
   const projects = [
-    { id: 1, name: "AWS Cloud Infrastructure", description: "Automated scalable AWS infrastructure with VPC and dynamically distributed subnets across multiple availability zones using Infrastructure as Code", technologies: ["AWS", "Terraform", "Packer", "CloudWatch", "API Gateway", "S3"], category: "cloud", github: "https://github.com/orgs/Cloud-computing-6225/repositories", demo: null, featured: true },
-    { id: 2, name: "Verbello", description: "A gamified language learning platform supporting 5 languages using React, Node.js, and MongoDB with interactive quizzes and immersive content", technologies: ["React", "Node.js", "MongoDB", "Express"], category: "fullstack", github: "https://github.com/nairashwin9297/Verbello-version-2", demo: "https://verbello.netlify.app/", featured: true },
-    { id: 3, name: "OrderHub", description: "Food ordering management system integrating SQL Server database with React.js and Node.js, enhanced with Power BI visualizations for real-time analytics", technologies: ["React.js", "Node.js", "SQL Server", "Power BI"], category: "fullstack", github: "https://github.com/nairashwin9297/OrderHub", demo: null, featured: true },
-    { id: 4, name: "GenAI Projects Collection", description: "Collection of 7 machine learning and generative AI projects including RAG systems, neural networks, GANs, LLM fine-tuning, and diffusion models", technologies: ["Python", "TensorFlow", "PyTorch", "FAISS", "LangChain", "Transformers"], category: "ai", github: "https://github.com/nairashwin9297/genAI_projects", demo: null, featured: true },
-    { id: 5, name: "Movie Recommender", description: "Personal movie recommendation system using hybrid Content-Based and Collaborative Filtering with advanced text analysis", technologies: ["Python", "Machine Learning", "NLP", "Pandas", "Scikit-learn"], category: "ai", github: "https://github.com/nairashwin9297", demo: null, featured: false },
-    { id: 6, name: "Food Ordering Mobile App", description: "Cross-platform food ordering mobile app for Android and iOS with secure JWT authentication, Firebase integration, and Google Places API", technologies: ["Flutter", "Firebase", "Android", "iOS", "Google Places API"], category: "fullstack", github: "https://github.com/nairashwin9297", demo: null, featured: false }
+    { id: 1, name: "AWS Cloud Infrastructure", description: "Automated scalable AWS infrastructure with VPC and dynamically distributed subnets across multiple availability zones using Infrastructure as Code", technologies: ["AWS", "Terraform", "Packer", "CloudWatch", "API Gateway", "S3"], category: "cloud", github: "https://github.com/orgs/Cloud-computing-6225/repositories", demo: null, featured: true,image: awsImg },
+    { id: 2, name: "Verbello", description: "A gamified language learning platform supporting 5 languages using React, Node.js, and MongoDB with interactive quizzes and immersive content", technologies: ["React", "Node.js", "MongoDB", "Express"], category: "fullstack", github: "https://github.com/nairashwin9297/Verbello-version-2", demo: "https://verbello.netlify.app/", featured: true, image:verbelloImg },
+    { id: 3, name: "OrderHub", description: "Food ordering management system integrating SQL Server database with React.js and Node.js, enhanced with Power BI visualizations for real-time analytics", technologies: ["React.js", "Node.js", "SQL Server", "Power BI"], category: "fullstack", github: "https://github.com/nairashwin9297/OrderHub", demo: null, featured: true,image:orderhubImg},
+    { id: 4, name: "GenAI Projects Collection", description: "Collection of 7 machine learning and generative AI projects including RAG systems, neural networks, GANs, LLM fine-tuning, and diffusion models", technologies: ["Python", "TensorFlow", "PyTorch", "FAISS", "LangChain", "Transformers"], category: "ai", github: "https://github.com/nairashwin9297/genAI_projects", demo: null, featured: true,image:genaiImg },
+    { id: 5, name: "Movie Recommender", description: "Personal movie recommendation system using hybrid Content-Based and Collaborative Filtering with advanced text analysis", technologies: ["Python", "Machine Learning", "NLP", "Pandas", "Scikit-learn"], category: "ai", github: "https://github.com/nairashwin9297", demo: null, featured: false, image: movieImg},
+    // { id: 6, name: "Food Ordering Application", description: "Food Ordering SQL Server database with Triggers, Functions, Stored Procedures, Views implemented along with Power BI dashboard ", technologies: ["SQL Serve, Power BI, React"], category: "fullstack", github: "https://github.com/nairashwin9297", demo: null, featured: false, image:orderhubImg }
   ];
 
   const experiences = [
@@ -246,16 +264,16 @@ const Index = () => {
                       <div className="text-3xl font-bold text-green-500 mb-2">58+</div>
                       <div className="text-muted-foreground">Students Mentored</div>
                     </div>
-                    <div className="text-center p-4 bg-card rounded-lg shadow-md">
+                    {/* <div className="text-center p-4 bg-card rounded-lg shadow-md">
                       <div className="text-3xl font-bold text-orange-500 mb-2">6</div>
                       <div className="text-muted-foreground">Major Projects</div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className="flex justify-center">
                   <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="relative">
                     <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-primary shadow-2xl">
-                      <img src={info.profilePhoto} alt="Ashwin Nair" className="w-full h-full object-cover" />
+                    <img src={ashwinImg} alt="Ashwin Nair" className="w-full h-full object-cover object-[center_15%]" />
                     </div>
                     <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-xl">
                       <FaCode className="text-4xl text-white" />
@@ -291,8 +309,13 @@ const Index = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredProjects.map((project) => (
                   <motion.div key={project.id} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} whileHover={{ y: -10 }} transition={{ duration: 0.3 }} className="bg-card rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
-                    <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"><FaRocket className="text-6xl text-white opacity-50" /></div>
-                    <div className="p-6">
+<div className="h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
+        <img 
+          src={project.image} 
+          alt={project.name}
+          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+        />
+      </div>                    <div className="p-6">
                       <div className="flex items-start justify-between mb-3">
                         <h3 className="text-xl font-bold">{project.name}</h3>
                         {project.featured && <span className="px-2 py-1 bg-yellow-400 text-yellow-900 text-xs rounded-full">Featured</span>}
